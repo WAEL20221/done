@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoneBusiness2025.Views.Delegate.MainPage"
+             NavigationPage.HasNavigationBar="False"
+              Shell.NavBarIsVisible="False"
+               Shell.BackgroundColor="#88D1FF"
+                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:resources="clr-namespace:DoneBusiness2025.AppResourcee"
+              Title="{x:Static resources:AppResource.Back}">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#88D1FF" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+    <Grid HorizontalOptions="FillAndExpand"   VerticalOptions="FillAndExpand"  RowSpacing="0" ColumnSpacing="0"  BackgroundColor="White"   >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Spacing="0" Padding="0" BackgroundColor="#98D8FF" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Orientation="Vertical" >
+            <StackLayout  Padding="13,20,13,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal">
+                
+                <Image Source="io5.png" WidthRequest="90" HeightRequest="60"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"  Aspect="AspectFit" />
+
+                <Border   Margin="2" HeightRequest="36"   Padding="5,2,5,2"   HorizontalOptions="End"   BackgroundColor="#DCDBDB" >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="7" />
+
+                    </Border.StrokeShape>
+                    <StackLayout  BackgroundColor="#DCDBDB"  Padding="0"  Spacing="0" HeightRequest="34"     Orientation="Horizontal">
+ 
+                        <Button x:Name="Connecteds" TextColor="White" FontAttributes="Bold"  CornerRadius="6"  Padding="12,5,12,5" Margin="0" HeightRequest="30"     FontSize="12" Clicked="Connecteds_Clicked" Text="{x:Static resources:AppResource.Connected}" />
+                        <Button x:Name="Notconnected"  TextColor="White" FontAttributes="Bold"   CornerRadius="6"  Padding="12,5,12,5"   Margin="0"  HeightRequest="30"   FontSize="12" Clicked="Notconnected_Clicked"  Text="{x:Static resources:AppResource.notconnected}" />
+
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+             
+
+            <StackLayout x:Name="StackLayoutShopNewOrder" IsVisible="false"  Padding="15,6,15,6" Spacing="10" BackgroundColor="#DC7F7F" HorizontalOptions="FillAndExpand" VerticalOptions="End" Grid.Row="0" >
+                <StackLayout Spacing="4" HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
+                    <Label  Text="{x:Static resources:AppResource.Neworder}"    FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="15"/>
+
+                    <Button  x:Name="ShopNewOrder" Text="{x:Static resources:AppResource.shows}"  TextColor="White" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="White" BorderWidth="0.8" Padding="4,0,4,0" HeightRequest="25"  CornerRadius="8"   Clicked="ShopNewOrder_Clicked"  />
+
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+
+
+
+
+        <StackLayout x:Name="StIsOrder"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="false"  Orientation="Vertical"  Grid.Row="1">
+
+            <ListView  x:Name="ListIsOrder" ItemsSource="{Binding IsOrder}" IsPullToRefreshEnabled="True"  VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" SelectionMode="None"  
+               HasUnevenRows="True" SeparatorVisibility="None" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate  >
+                        <ViewCell >
+                            <Border Margin="17,9,17,9"    BackgroundColor="WhiteSmoke"   Padding="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="11" />
+
+                                </Border.StrokeShape>
+                                <Grid   ColumnSpacing="0" RowSpacing="0"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Padding="15,5,15,5" Spacing="4" BackgroundColor="{Binding DataOrder}" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
+
+
+                                        <StackLayout    HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Spacing="3"      Orientation="Horizontal">
+                                            <Label   Margin="0,0,0,0" Text="{x:Static resources:AppResource.Neworder}"   HorizontalOptions="Start"  TextColor="White" VerticalOptions="CenterAndExpand" FontSize="13" FontAttributes="Bold" />
+                                            <Image Margin="0,0,4,0" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="17" HeightRequest="19" Source="marker.png" />
+                                            <Label HorizontalOptions="StartAndExpand"   TextColor="White" FontSize="13" FontAttributes="Bold" VerticalOptions="End" Text="{Binding CityLocality}" />
+
+
+                                        </StackLayout>
+
+                                        <Label   Margin="0,0,0,0" Text="{Binding TimeAccsptReadyBosh}"   HorizontalOptions="End"  TextColor="White" VerticalOptions="CenterAndExpand" FontSize="13" FontAttributes="Bold" />
+
+                                    </StackLayout>
+
+
+                                    <StackLayout Spacing="4" Padding="10,5,10,5"  HorizontalOptions="StartAndExpand"   Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" >
+
+                                        <Label   HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold" FontSize="14" TextColor="#908700" Text="{x:Static resources:AppResource.Storename}"  />
+
+                                        <Label      Margin="0,0,0,0" Text="{Binding SubThoroughfare}"  HorizontalOptions="End"  TextColor="#4B4883" VerticalOptions="CenterAndExpand" FontSize="14" FontAttributes="Bold" />
+
+                                    </StackLayout>
+
+
+
+                                    <StackLayout  Padding="10,0,10,5"  Spacing="3" Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand"  Orientation="Horizontal">
+                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Text="{x:Static resources:AppResource.Ordernumber}"   FontAttributes="Bold" FontSize="14" TextColor="#908700" />
+                                        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="#4B4883" FontSize="14"  Text="{Binding Id}" />
+
+                                    </StackLayout>
+
+                                    <StackLayout Padding="10,0,10,5"   Spacing="3" Grid.Row="2" Grid.Column="1"    Orientation="Horizontal">
+                                        <Image HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="25" HeightRequest="25" Source="fastdelivery.png" />
+                                        <Label   HorizontalOptions="End" VerticalOptions="Center" FontAttributes="Bold" FontSize="12" TextColor="#908700" Text="{x:Static resources:AppResource.deliveryfee}"  />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center"  Text="{Binding PricepackagDriver}" FontAttributes="Bold" FontSize="12" TextColor="#4B4883" />
+                                        <Label HorizontalOptions="End" VerticalOptions="End"  Text="{x:Static resources:AppResource.SAR}"  FontAttributes="Bold" FontSize="9" TextColor="#4B4883" />
+                                    </StackLayout>
+
+
+
+
+
+
+                                    <StackLayout Padding="10,0,10,5"  Spacing="3" Grid.Row="4" Grid.Column="0"   IsVisible="{Binding Cash}"  Orientation="Horizontal">
+                                        <Image HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="25" HeightRequest="25" Source="paymentmethod.png" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{x:Static resources:AppResource.Paymentuponreceipt}"  FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+
+                                    </StackLayout>
+
+
+
+
+                                    <StackLayout Padding="10,0,10,5" Spacing="3" Grid.Row="4" Grid.Column="0"   IsVisible="{Binding PaymentStatus}"  Orientation="Horizontal">
+                                        <Image HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="25"   HeightRequest="25" Source="mobilepayment.png" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{x:Static resources:AppResource.electronicpayment}"  FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+                                    </StackLayout>
+
+
+
+                                    <StackLayout Padding="10,0,10,5"  Spacing="2" Grid.Row="4" Grid.Column="1"  IsVisible="{Binding PaymentProcessNumber}"   Orientation="Horizontal">
+                                        <Image HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="25" HeightRequest="25" Source="pricetag.png" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{x:Static resources:AppResource.totalprice}"    FontSize="12" TextColor="#908700" FontAttributes="Bold" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding TotalPrice}"   FontSize="11" TextColor="#4B4883" FontAttributes="Bold" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center" Text="{x:Static resources:AppResource.SAR}"  FontSize="9" TextColor="#4B4883" FontAttributes="Bold" />
+
+                                    </StackLayout>
+                                    <Border IsVisible="{Binding NoteStatusDriver}" BackgroundColor="Transparent"   Margin="5,0,5,0"  Grid.Row="3"  Grid.ColumnSpan="2"  Padding="10,5,10,5"    >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout  BackgroundColor="Transparent" Spacing="3"       Orientation="Vertical">
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+
+                                                <Image HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="19"   HeightRequest="19" Source="writing.png" />
+                                                <Label HorizontalOptions="Start" VerticalOptions="End" Text="{x:Static resources:AppResource.Ordernotes}"  FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+                                            </StackLayout>
+
+                                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="End" Text="{Binding TimeAccsptBosh }"  FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+                                        </StackLayout>
+                                    </Border>
+
+                                    <Border  Margin="14,8,14,8"  x:Name="Dites" Grid.Row="6" Grid.ColumnSpan="2" Padding="10,2,10,2" HeightRequest="40" HorizontalOptions="CenterAndExpand"  Stroke="{Binding DataOrder}" IsVisible="{Binding NoteStatusDriver}"  BackgroundColor="{Binding DataOrder}"   VerticalOptions="CenterAndExpand"   >
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="5" />
+
+                                    </Border.StrokeShape>
+                                        <StackLayout  Spacing="8"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                            <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="badgecheck.png" />
+                                            <Label FontSize="15"  FontAttributes="Bold"  TextColor="White" VerticalOptions="End"      HorizontalOptions="End"   Text="{x:Static resources:AppResource.RequestAccept}" />
+
+                                        </StackLayout>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="Dites_Clicked"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+
+
+
+                                </Grid>
+
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+        </StackLayout>
+
+        <StackLayout x:Name="StIsMyOrder" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="false" Orientation="Vertical" Grid.Row="1" >
+
+            <ListView  x:Name="ListIsMyOrder" IsPullToRefreshEnabled="True" ItemsSource="{Binding IsMyOrder}"  VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" SelectionMode="None"  
+               HasUnevenRows="True" SeparatorVisibility="None" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate  >
+                        <ViewCell >
+                            <Border Margin="9"   BackgroundColor="WhiteSmoke"     Padding="0" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="11" />
+
+                                </Border.StrokeShape>
+                                <Grid   ColumnSpacing="0" RowSpacing="0"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Padding="15,5,15,5" BackgroundColor="{Binding Paymentcodess}" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" >
+
+
+                                        <StackLayout    HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Spacing="6"      Orientation="Horizontal">
+                                            <Label   Margin="0,0,0,0" Text="{x:Static resources:AppResource.Deliveryinprogress}"   HorizontalOptions="Start"  TextColor="White" VerticalOptions="CenterAndExpand" FontSize="13" FontAttributes="Bold" />
+                                            <Image Margin="0,0,4,0" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="17" HeightRequest="19" Source="marker.png" />
+                                            <Label HorizontalOptions="StartAndExpand"   TextColor="White" FontSize="12" FontAttributes="Bold" VerticalOptions="End" Text="{Binding CityLocality}" />
+
+
+                                        </StackLayout>
+
+                                        <Label   Margin="0,0,0,0" Text="{Binding TimeAccsptReadyBosh}"   HorizontalOptions="End"  TextColor="White" VerticalOptions="CenterAndExpand" FontSize="13" FontAttributes="Bold" />
+
+                                    </StackLayout>
+
+
+                                    <StackLayout Padding="10,5,10,5"  HorizontalOptions="StartAndExpand"   Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" >
+
+                                        <Label   HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold" FontSize="14" TextColor="#545454" Text="{x:Static resources:AppResource.Storename}"  />
+
+                                        <Label      Margin="0,0,0,0" Text="{Binding SubThoroughfare}"  HorizontalOptions="End"  TextColor="#4B4883" VerticalOptions="CenterAndExpand" FontSize="14" FontAttributes="Bold" />
+
+                                    </StackLayout>
+
+
+
+                                    <StackLayout Padding="10,0,10,5"   Spacing="1" Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand"  Orientation="Horizontal">
+                                        <Label HorizontalOptions="Start" VerticalOptions="Center" Text="{x:Static resources:AppResource.Ordernumber}"   FontAttributes="Bold" FontSize="14" TextColor="#545454" />
+                                        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontAttributes="Bold" TextColor="#4B4883" FontSize="14"  Text="{Binding Id}" />
+
+                                    </StackLayout>
+
+                                    <StackLayout Padding="10,0,10,5"   Spacing="3" Grid.Row="2" Grid.Column="1"    Orientation="Horizontal">
+                                        <Image HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="25" HeightRequest="25" Source="fastdelivery.png" />
+                                        <Label   HorizontalOptions="End" VerticalOptions="Center" FontAttributes="Bold" FontSize="12" TextColor="#545454" Text="{x:Static resources:AppResource.deliveryfee}"  />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center"  Text="{Binding PricepackagDriver}" FontAttributes="Bold" FontSize="12" TextColor="#4B4883" />
+                                        <Label HorizontalOptions="End" VerticalOptions="Center"  Text="{x:Static resources:AppResource.SAR}"  FontAttributes="Bold" FontSize="9" TextColor="#4B4883" />
+                                    </StackLayout>
+
+
+
+
+
+                                    <Border IsVisible="{Binding NoteStatusDriver}" BackgroundColor="Transparent"   Margin="5,0,5,0"  Grid.Row="3"  Grid.ColumnSpan="2"  Padding="10,5,10,5"    >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout  BackgroundColor="Transparent" Spacing="3"       Orientation="Vertical">
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+
+                                                <Image HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="19"   HeightRequest="19" Source="writing.png" />
+                                                <Label HorizontalOptions="Start" VerticalOptions="End" Text="{x:Static resources:AppResource.Customernote}"  FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+                                            </StackLayout>
+
+                                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="End" Text="{Binding StreetThoroughfare }"  FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+                                        </StackLayout>
+                                    </Border>
+
+                                    <Border IsVisible="{Binding PaymentCardStartEnd}"   Grid.Row="4" Grid.ColumnSpan="2" Margin="5" Padding="10,5,10,5"    >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout  BackgroundColor="Transparent" Spacing="3"      Orientation="Vertical">
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+
+                                                <Image HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="19"   HeightRequest="19" Source="writing.png" />
+                                                <Label HorizontalOptions="Start" VerticalOptions="End" Text="{x:Static resources:AppResource.Importantdetails}"   FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+                                            </StackLayout>
+
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+                                                <Label HorizontalOptions="End" VerticalOptions="End" Text="{x:Static resources:AppResource.Paytheshows}"    FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+
+                                                <Label HorizontalOptions="End" VerticalOptions="End" Text="{Binding  NotCancelOrder}"  FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+
+
+                                            </StackLayout>
+
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+                                                <Label HorizontalOptions="End" VerticalOptions="End" Text="{x:Static resources:AppResource.Takeclient}"    FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+                                                <Label HorizontalOptions="End" VerticalOptions="End" Text="{Binding  TimeAccsptDriver}"   FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+
+
+                                            </StackLayout>
+
+
+                                        </StackLayout>
+
+                                    </Border>
+
+                                    <Border  Margin="5" IsVisible="{Binding  TimeDriver}"  BackgroundColor="Transparent"   Grid.Row="5" Grid.ColumnSpan="2"  Padding="10,5,10,5"    >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout  BackgroundColor="Transparent" Spacing="3"       Orientation="Vertical">
+                                            <StackLayout Spacing="3" Orientation="Horizontal">
+
+                                                <Image HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="19"   HeightRequest="19" Source="writing.png" />
+                                                <Label HorizontalOptions="Start" VerticalOptions="End" Text="{x:Static resources:AppResource.Ordernotes}"    FontSize="14" TextColor="#545454" FontAttributes="Bold" />
+                                            </StackLayout>
+
+                                            <Label   HorizontalOptions="Start" VerticalOptions="End" Text="{Binding  TimeAccsptBosh}"   FontSize="14" TextColor="#4B4883" FontAttributes="Bold" />
+                                        </StackLayout>
+                                    </Border>
+
+
+
+                                    <StackLayout   IsVisible="{Binding IdcahckWallts}" Grid.Row="6" Grid.ColumnSpan="2" Spacing="11" Orientation="Horizontal"  Padding="20,0,20,0" HorizontalOptions="FillAndExpand" >
+
+                                        <Label FontSize="13" FontAttributes="Bold"  TextColor="#4B4883" VerticalOptions="CenterAndExpand"      HorizontalOptions="StartAndExpand"   Text="{x:Static resources:AppResource.deviceinterpay}"      />
+                                        <Border   VerticalOptions="CenterAndExpand" Stroke="#4B4883" BackgroundColor="LightSteelBlue"  HorizontalOptions="Start"   Padding="8,0,8,0"  HeightRequest="35"   Margin="0,8,0,8" >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout Spacing="5"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" WidthRequest="35" MinimumWidthRequest="35"  MaximumWidthRequest="35"  VerticalOptions="CenterAndExpand" Aspect="AspectFit" Source="logomada.jpg" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="#4B4883" VerticalOptions="CenterAndExpand"      HorizontalOptions="CenterAndExpand"   Text="{x:Static resources:AppResource.madeinertpay}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="interpayorder_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+
+                                    </StackLayout>
+                                     
+
+
+
+                                   
+
+
+                                    <Border       VerticalOptions="CenterAndExpand" Stroke="{Binding Paymentcodess}" BackgroundColor="{Binding Paymentcodess}" HorizontalOptions="FillAndExpand"  HeightRequest="40" Grid.Row="7" Grid.Column="0" Padding="20,0,20,0" IsVisible="{Binding PaymentAmount}" IsEnabled="{Binding TimeAccsptReceivedDriver}" Margin="8,8,8,8"   >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout  Spacing="3"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                            <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="mapmarker.png" />
+                                            <Label FontSize="14" FontAttributes="Bold"   TextColor="White" VerticalOptions="CenterAndExpand"      HorizontalOptions="CenterAndExpand"    Text="{Binding DateAccsptReceivedDriver}" />
+
+                                        </StackLayout>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="GoToShop_Clicked"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+
+
+
+                                    <Border   VerticalOptions="CenterAndExpand" Stroke="White" BackgroundColor="RosyBrown"  HorizontalOptions="FillAndExpand"  Grid.Row="7" Grid.Column="1" Padding="4,0,4,0"  HeightRequest="40"  WidthRequest="100"  Margin="0,4,0,4" >
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="7" />
+
+                                        </Border.StrokeShape>
+                                        <StackLayout   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                            <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="receipt.png" />
+                                            <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="CenterAndExpand"      HorizontalOptions="CenterAndExpand"    Text="{x:Static resources:AppResource.Complaintss}"   />
+
+                                        </StackLayout>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="complaintl_Clicked"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+
+
+
+                                    <Grid  Grid.Row="8" Padding="7,0,7,5" ColumnSpacing="0" RowSpacing="0"  BackgroundColor="Transparent"   Grid.ColumnSpan="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border  VerticalOptions="CenterAndExpand"    BackgroundColor="{Binding Paymentcodess}"  HorizontalOptions="StartAndExpand" IsVisible="{Binding PaymentProcessNumber}"    Grid.Row="1" Grid.Column="0" Padding="4,0,4,0"   HeightRequest="40" WidthRequest="150"   >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout  Spacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="consumption.png" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Ireceivedtheorder}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="IreceivedtheOrder_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+                                        <Border  VerticalOptions="CenterAndExpand"    BackgroundColor="{Binding Paymentcodess}"  HorizontalOptions="StartAndExpand" IsVisible="{Binding TimeOrder}"    Grid.Row="1" Grid.Column="0" Padding="4,0,4,0"   HeightRequest="40" WidthRequest="150"   >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout  Spacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="consumption.png" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Issuinganinvoice}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="PushBillOrder_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+                                        <Border  VerticalOptions="CenterAndExpand"   BackgroundColor="{Binding Paymentcodess}"   HorizontalOptions="StartAndExpand" IsVisible="{Binding NoteReadyBosh}"  Grid.Row="1" Grid.Column="0" Padding="4,0,4,0"      HeightRequest="40"  WidthRequest="150"    >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout  Spacing="2"   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="fileinvoice.png" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Issuinganinvoice}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="IssuinganInvoice_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+
+
+                                        <Border   VerticalOptions="CenterAndExpand"   BackgroundColor="{Binding Paymentcodess}"  HorizontalOptions="EndAndExpand"  Grid.Row="1" Grid.Column="1" Padding="4,0,4,0"  HeightRequest="40"  WidthRequest="100"  >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout Spacing="2"   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="receipt.png" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Billss}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="Bill_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+ 
+
+                                        <Border    VerticalOptions="CenterAndExpand"   BackgroundColor="{Binding Paymentcodess}"   HorizontalOptions="StartAndExpand" IsVisible="{Binding CancelOrder}"   Margin="0,7,0,0"  Grid.Row="2" Grid.Column="0" Padding="4,0,4,0"    HeightRequest="40" WidthRequest="150"   >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout  Spacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="mapmarker.png" />
+                                                <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Gototheclient}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="GoTotheClient_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+                                        <Border VerticalOptions="CenterAndExpand"     BackgroundColor="{Binding Paymentcodess}"  HorizontalOptions="EndAndExpand" Margin="0,7,0,0"   Grid.Row="2" Grid.Column="1" Padding="4,0,4,0"   HeightRequest="40" WidthRequest="100"  >
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="7" />
+
+                                            </Border.StrokeShape>
+                                            <StackLayout   Spacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="messages.png" />
+                                                <Label FontSize="10" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Chatwithclient}"   />
+
+                                            </StackLayout>
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="ChatWiththeCustomer_Clicked"/>
+                                            </Border.GestureRecognizers>
+                                        </Border>
+ 
+                                        <StackLayout IsVisible="{Binding CancelOrder}"  Padding="0,2,0,2"  Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+
+
+
+                                            <Border   VerticalOptions="CenterAndExpand"    BackgroundColor="{Binding Paymentcodess}" HorizontalOptions="StartAndExpand" Margin="0,7,0,0"  WidthRequest="150"   Padding="4,0,4,0"   HeightRequest="40"   >
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="7" />
+
+                                                </Border.StrokeShape>
+                                                <StackLayout  Spacing="4"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                    <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="location.png" />
+                                                    <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.Arrivedcustomer}"   />
+
+                                                </StackLayout>
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding IdCustomer}" Tapped="CustomerSiteReached_Clicked"/>
+                                                </Border.GestureRecognizers>
+                                            </Border>
+
+                                            <Border VerticalOptions="CenterAndExpand"   IsVisible="{Binding FreeDriveriv}"   BackgroundColor="{Binding Paymentcodess}"  HorizontalOptions="EndAndExpand"  Margin="0,7,0,0" WidthRequest="100"    Padding="4,0,4,0"   HeightRequest="40"  >
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="7" />
+
+                                                </Border.StrokeShape>
+                                                <StackLayout  Spacing="3"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                                                    <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="message.png" />
+                                                    <Label FontSize="11" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="End"    Text="{x:Static resources:AppResource.orderhasbeen}"   />
+
+                                                </StackLayout>
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="YesOrder_Clicked"/>
+                                                </Border.GestureRecognizers>
+                                            </Border>
+
+
+
+                                        </StackLayout>
+ 
+                                    </Grid>
+
+                                </Grid>
+
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </StackLayout>
+
+        <StackLayout x:Name="StStatic"   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsVisible="false"  Orientation="Vertical"  Grid.Row="1">
+
+            <Label x:Name="LabelStatic" Text="{x:Static resources:AppResource.Youraccountis}"   TextColor="Black" FontSize="14" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"  />
+
+            <Border x:Name="ButtLoction" IsVisible="false"    VerticalOptions="Start"  Stroke="#8DCBDE" BackgroundColor="#8DCBDE"  HorizontalOptions="CenterAndExpand"     Padding="4,0,4,0"   HeightRequest="40" WidthRequest="150"  >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="7" />
+
+                </Border.StrokeShape>
+                <StackLayout   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Orientation="Horizontal">
+                    <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Source="marker.png" />
+                    <Label FontSize="13" FontAttributes="Bold"  TextColor="White" VerticalOptions="Center"      HorizontalOptions="Center"    Text="{x:Static resources:AppResource.ActivationLocation}"   />
+
+                </StackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding Id}" Tapped="ButtLoction_Clicked"/>
+                </Border.GestureRecognizers>
+            </Border>
+
+
+        </StackLayout>
+
+
+
+    </Grid>
+
+</ContentPage>
